@@ -9,8 +9,6 @@ FetchContent_Declare(
         URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
 )
 
-file(GLOB_RECURSE ENGINE_SOURCES *.cpp *.c)
-
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 include_directories(../include ../src)
@@ -22,6 +20,8 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
+
+file(GLOB_RECURSE ENGINE_SOURCES *.cpp *.c)
 
 add_executable(GoogleTest ${ENGINE_SOURCES})
 
