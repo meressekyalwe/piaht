@@ -1,32 +1,22 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(GoogleTest)
+project(piaht_gtest)
 
 include(FetchContent)
 
 FetchContent_Declare(
         googletest
-        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
-)
+        GIT_REPOSITORY https://github.com/google/googletest
+        GIT_TAG v1.14.0)
 
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+FetchContent_GetProperties(googletest)
+
+if (NOT googletest_POPULATED)
+        FetchContent_Populate(googletest)
+        add_subdirectory(${googletest_SOURCE_DIR} ${CMAKE_BINARY_DIR}/googletest-build)
+endif()
 
 include_directories(../include ../src)
 
-#set(gtest_disable_pthreads on) #needed in MinGW
-
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-FetchContent_MakeAvailable(googletest)
-
-enable_testing()
-
-file(GLOB_RECURSE ENGINE_SOURCES *.cpp *.c)
-
-add_executable(GoogleTest ${ENGINE_SOURCES})
-
-target_link_libraries(GoogleTest PRIVATE gtest_main)
-
-include(GoogleTest)
-
-gtest_discover_tests(GoogleTest)
+add_executable(piaht_gtest properties_calculator_test.cpp)
+target_link_libraries(piaht_gtest gtest_main gmock_main) 
