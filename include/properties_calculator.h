@@ -17,11 +17,13 @@ typedef struct
     float massFraction;
     float viscosity;
     float heatConductance;
-}Component;
+} Component;
 
 bool initComponents(int n);
 
 
+/// @brief 
+/// @return 
 float molarMassMixture();
 
 
@@ -42,10 +44,13 @@ float molarFractionFromMass(float massFraction, float molarMassComp, float molar
 
 
 
+/// @brief 
+/// @return 
 float mixtureDensity();
 
 
 
+/// @brief 
 void finish();
 
 #endif
