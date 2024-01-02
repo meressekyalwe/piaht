@@ -1,6 +1,7 @@
-#include "gtest/gtest.h"
+#include <CppUTest/CommandLineTestRunner.h>
 
-TEST(Demo, 1_plus_1_equals_2)
+int main(int ac, char** av)
 {
-    EXPECT_EQ(2, 1 + 1);
+  return RUN_ALL_TESTS(ac, av);
 }
+

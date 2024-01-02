@@ -1,46 +1,16 @@
-cmake_minimum_required(VERSION 3.13)
-
-project(piaht_gtest)
-
-include_directories(../include ../src)
-
-add_executable(piaht_gtest test_main.cpp)
-
-
+set(CURRENT_EXE_NAME piaht_tests)
 
 include(FetchContent)
-
 FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest
-        GIT_TAG  release-1.11.0)
-
-FetchContent_GetProperties(googletest)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-if (NOT googletest_POPULATED)
-        FetchContent_Populate(googletest)
-        add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
-        include_directories(${gtest_SOURCE_DIR}/include ${gmock_SOURCE_DIR}/include)
-endif()
-
-target_link_libraries(piaht_gtest gtest gtest_main) 
-endif()
-
-if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-#set(gtest_disable_pthreads on) #needed in MinGW
-
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-FetchContent_MakeAvailable(googletest)
-
-target_link_libraries(piaht_gtest PRIVATE gtest_main)
-
-include(GoogleTest)
-
-gtest_discover_tests(GoogleTest)
-
-endif()
-
-
+    CppUTest
+    GIT_REPOSITORY https://github.com/cpputest/cpputest.git
+    GIT_TAG        master
+)
+# Set this to ON if you want to have the CppUTests in your project as well.
+set(TESTS OFF CACHE BOOL "Switch off CppUTest Test build")
+FetchContent_MakeAvailable(CppUTest)
+include_directories(${CppUTest_SOURCE_DIR}/include)
+set(SOURCE_FILES test_main.cpp)
+add_executable(${CURRENT_EXE_NAME} ${SOURCE_FILES})
+target_include_directories(${CURRENT_EXE_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(${CURRENT_EXE_NAME} CppUTest CppUTestExt)
