@@ -1,3 +1,6 @@
 #include "gtest/gtest.h"
-#include "properties_calculator.h"
 
+TEST(Demo, plus)
+{
+    EXPECT_EQ(2, 1 + 1);
+}
