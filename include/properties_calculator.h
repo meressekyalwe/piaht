@@ -9,14 +9,14 @@
 /// @brief 
 typedef struct 
 {
-    int id;
-    char* name;
-    float molarMass;
-    float temperature;
-    float density;
-    float massFraction;
-    float viscosity;
-    float heatConductance;
+    int Id;
+    char* Name;
+    float MolarMass;
+    float Temperature;
+    float Density;
+    float MassFraction;
+    float Viscosity;
+    float HeatConductance;
 } Component;
 
 bool InitComponents(int n);
@@ -29,18 +29,18 @@ float MolarMassMixture();
 
 /// @brief Пересчёт мольного доля компонента в массовый, многокомпонентной смеси
 /// @param molarFraction молярная долия компонента
-/// @param molarMassComp молярная масса компонента
-/// @param molarMassMisture молярная масса смесь
+/// @param MolarMassComp молярная масса компонента
+/// @param MolarMassMisture молярная масса смесь
 /// @return массовый доль
-float MassFractionFromMolar(float molarFraction, float molarMassComp, float molarMassMisture);
+float MassFractionFromMolar(float molarFraction, float MolarMassComp, float MolarMassMisture);
 
 
 /// @brief Пересчёт массовых долей в мольные, многокомпонентной смеси
 /// @param massFraction массовая долия компонента
-/// @param molarMassComp молярная масса компонента
-/// @param molarMassMisture молярная масса смесь
+/// @param MolarMassComp молярная масса компонента
+/// @param MolarMassMisture молярная масса смесь
 /// @return молярная доля
-float MolarFractionFromMass(float massFraction, float molarMassComp, float molarMassMisture);
+float MolarFractionFromMass(float massFraction, float MolarMassComp, float MolarMassMisture);
 
 
 

@@ -3,47 +3,47 @@
 #include <stdlib.h>
 
 int nComponents = 0;
-Component* listOfComponents = NULL;
+Component* ListOfComponents = NULL;
 
-bool initComponents(int n)
+bool InitComponents(int n)
 {
     nComponents = n;
 
-    listOfComponents = malloc(sizeof(Component) * nComponents);
+    ListOfComponents = malloc(sizeof(Component) * nComponents);
 
     return true;
 }
 
-float molarMassMixture()
+float MolarMassMixture()
 {
     return 0.0f;
 }
 
-float molarFractionFromMolar(float molarFraction, float molarMassComp, float molarMassMisture)
+float MolarFractionFromMolar(float MolarFraction, float MolarMassComp, float MolarMassMisture)
 {
-    return molarFraction * molarMassComp / molarMassMisture;
+    return MolarFraction * MolarMassComp / MolarMassMisture;
 }
 
-float molarFractionFromMass(float massFraction, float molarMassComp, float molarMassMisture)
+float MolarFractionFromMass(float MassFraction, float MolarMassComp, float MolarMassMisture)
 {
-    return (massFraction / molarMassComp) / (1 / molarMassMisture);   
+    return (MassFraction / MolarMassComp) / (1 / MolarMassMisture);   
 }
 
-float mixtureDensity()
+float MixtureDensity()
 {
     float sum = 0.f;
-    if (listOfComponents != NULL)
+    if (ListOfComponents != NULL)
     {
         for (int i = 0; i < nComponents; i++)
         {
-            sum += (listOfComponents[i].density / listOfComponents[i].massFraction);
+            sum += (ListOfComponents[i].Density / ListOfComponents[i].MassFraction);
         }
     }
 
     return sum;
 }
 
-void finish()
+void Finish()
 {
-    free(listOfComponents);
+    free(ListOfComponents);
 }
