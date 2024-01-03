@@ -19,12 +19,12 @@ typedef struct
     float heatConductance;
 } Component;
 
-bool initComponents(int n);
+bool InitComponents(int n);
 
 
 /// @brief 
 /// @return 
-float molarMassMixture();
+float MolarMassMixture();
 
 
 /// @brief Пересчёт мольного доля компонента в массовый, многокомпонентной смеси
@@ -32,7 +32,7 @@ float molarMassMixture();
 /// @param molarMassComp молярная масса компонента
 /// @param molarMassMisture молярная масса смесь
 /// @return массовый доль
-float massFractionFromMolar(float molarFraction, float molarMassComp, float molarMassMisture);
+float MassFractionFromMolar(float molarFraction, float molarMassComp, float molarMassMisture);
 
 
 /// @brief Пересчёт массовых долей в мольные, многокомпонентной смеси
@@ -40,17 +40,17 @@ float massFractionFromMolar(float molarFraction, float molarMassComp, float mola
 /// @param molarMassComp молярная масса компонента
 /// @param molarMassMisture молярная масса смесь
 /// @return молярная доля
-float molarFractionFromMass(float massFraction, float molarMassComp, float molarMassMisture);
+float MolarFractionFromMass(float massFraction, float molarMassComp, float molarMassMisture);
 
 
 
 /// @brief 
 /// @return 
-float mixtureDensity();
+float MixtureDensity();
 
 
 
 /// @brief 
-void finish();
+void Finish();
 
 #endif
