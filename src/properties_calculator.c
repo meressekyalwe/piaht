@@ -14,6 +14,11 @@ bool initComponents(int n)
     return true;
 }
 
+float molarMassMixture()
+{
+    return 0.0f;
+}
+
 float molarFractionFromMolar(float molarFraction, float molarMassComp, float molarMassMisture)
 {
     return molarFraction * molarMassComp / molarMassMisture;

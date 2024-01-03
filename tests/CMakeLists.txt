@@ -1,22 +1,20 @@
-cmake_minimum_required(VERSION 3.14)
-
-project(piaht_gtest)
+set(CURRENT_EXE_NAME piaht_tests)
 
 include(FetchContent)
-
 FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest
-        GIT_TAG v1.14.0)
+    CppUTest
+    GIT_REPOSITORY https://github.com/cpputest/cpputest.git
+    GIT_TAG        master
+)
+# Set this to ON if you want to have the CppUTests in your project as well.
+set(TESTS ON CACHE BOOL "Switch off CppUTest Test build")
+FetchContent_MakeAvailable(CppUTest)
+include_directories(${CppUTest_SOURCE_DIR}/include)
+set(SOURCE_FILES test_main.cpp ../src/properties_calculator.c)
+add_executable(${CURRENT_EXE_NAME} ${SOURCE_FILES})
+target_include_directories(${CURRENT_EXE_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(${CURRENT_EXE_NAME} CppUTest CppUTestExt)
 
-FetchContent_GetProperties(googletest)
+#add_test(test_main ${CURRENT_EXE_NAME})
 
-if (NOT googletest_POPULATED)
-        FetchContent_Populate(googletest)
-        add_subdirectory(${googletest_SOURCE_DIR} ${CMAKE_BINARY_DIR}/googletest-build)
-endif()
-
-include_directories(../include ../src)
-
-add_executable(piaht_gtest properties_calculator_test.cpp)
-target_link_libraries(piaht_gtest gtest_main gmock_main) 
+#add_test(NAME test_script COMMAND "${CMAKE_CURRENT_LIST_DIR}/test_script.sh" WORKING_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
