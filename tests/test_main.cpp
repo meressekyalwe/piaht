@@ -1,37 +1,18 @@
-#include <CppUTest/CommandLineTestRunner.h>
-#include <CppUTest/TestHarness.h>
-#include "properties_calculator.h"
+#include <gtest/gtest.h>
 
-
-
-TEST_GROUP(PROPERTIES_CALCULATOR)
-{
-
-};
-
-TEST(PROPERTIES_CALCULATOR, molarMassMixture)
-{
-   
+TEST(TestGroupName, Subtest_1) {
+  ASSERT_TRUE(1 == 1);
 }
 
-TEST(PROPERTIES_CALCULATOR, massFractionFromMolar)
-{
-   
+TEST(TestGroupName, Subtest_2) {
+  ASSERT_FALSE('b' == 'b');
+  std::cout << "continue test after failure" << std::endl;
 }
 
 
-TEST(PROPERTIES_CALCULATOR, molarFractionFromMass)
+int main(int argc, char **argv)
 {
-  
-}
+  testing::InitGoogleTest(&argc, argv);
 
-TEST(PROPERTIES_CALCULATOR, mixtureDensity)
-{
-  
-}
-
-
-int main(int ac, char** av)
-{
-   return CommandLineTestRunner::RunAllTests(ac, av);
+  return RUN_ALL_TESTS();
 }
