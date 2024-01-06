@@ -1,5 +1,4 @@
 #include <iostream>
-#include "properties_calculator.h"
 
 int main()
 {

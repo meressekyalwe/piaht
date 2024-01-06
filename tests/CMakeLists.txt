@@ -10,5 +10,6 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
-add_executable(${CURRENT_EXE_NAME} test_main.cpp)
+file(GLOB_RECURSE SOURCES *.cpp)
+add_executable(${CURRENT_EXE_NAME} ${SOURCES})
 target_link_libraries(${CURRENT_EXE_NAME} PRIVATE GTest::GTest)
